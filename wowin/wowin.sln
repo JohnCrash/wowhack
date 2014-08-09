@@ -1,0 +1,40 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wowin", "wowin.vcproj", "{1F77600B-6EB0-48CD-820A-F08F2F7B14AE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+		wow_3.0.5|Win32 = wow_3.0.5|Win32
+		wow_3.2.2_tw|Win32 = wow_3.2.2_tw|Win32
+		wow_3.2|Win32 = wow_3.2|Win32
+		wow_322_cn_output|Win32 = wow_322_cn_output|Win32
+		wow_322_cn|Win32 = wow_322_cn|Win32
+		wow_335|Win32 = wow_335|Win32
+		wow_335R2|Win32 = wow_335R2|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1F77600B-6EB0-48CD-820A-F08F2F7B14AE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1F77600B-6EB0-48CD-820A-F08F2F7B14AE}.Debug|Win32.Build.0 = Debug|Win32
+		{1F77600B-6EB0-48CD-820A-F08F2F7B14AE}.Release|Win32.ActiveCfg = Release|Win32
+		{1F77600B-6EB0-48CD-820A-F08F2F7B14AE}.Release|Win32.Build.0 = Release|Win32
+		{1F77600B-6EB0-48CD-820A-F08F2F7B14AE}.wow_3.0.5|Win32.ActiveCfg = wow_3.0.5|Win32
+		{1F77600B-6EB0-48CD-820A-F08F2F7B14AE}.wow_3.0.5|Win32.Build.0 = wow_3.0.5|Win32
+		{1F77600B-6EB0-48CD-820A-F08F2F7B14AE}.wow_3.2.2_tw|Win32.ActiveCfg = wow_3.2.2_tw|Win32
+		{1F77600B-6EB0-48CD-820A-F08F2F7B14AE}.wow_3.2.2_tw|Win32.Build.0 = wow_3.2.2_tw|Win32
+		{1F77600B-6EB0-48CD-820A-F08F2F7B14AE}.wow_3.2|Win32.ActiveCfg = wow_3.2|Win32
+		{1F77600B-6EB0-48CD-820A-F08F2F7B14AE}.wow_3.2|Win32.Build.0 = wow_3.2|Win32
+		{1F77600B-6EB0-48CD-820A-F08F2F7B14AE}.wow_322_cn_output|Win32.ActiveCfg = wow_322_cn_output|Win32
+		{1F77600B-6EB0-48CD-820A-F08F2F7B14AE}.wow_322_cn_output|Win32.Build.0 = wow_322_cn_output|Win32
+		{1F77600B-6EB0-48CD-820A-F08F2F7B14AE}.wow_322_cn|Win32.ActiveCfg = wow_322_cn|Win32
+		{1F77600B-6EB0-48CD-820A-F08F2F7B14AE}.wow_322_cn|Win32.Build.0 = wow_322_cn|Win32
+		{1F77600B-6EB0-48CD-820A-F08F2F7B14AE}.wow_335|Win32.ActiveCfg = wow_335|Win32
+		{1F77600B-6EB0-48CD-820A-F08F2F7B14AE}.wow_335|Win32.Build.0 = wow_335|Win32
+		{1F77600B-6EB0-48CD-820A-F08F2F7B14AE}.wow_335R2|Win32.ActiveCfg = wow_335R2|Win32
+		{1F77600B-6EB0-48CD-820A-F08F2F7B14AE}.wow_335R2|Win32.Build.0 = wow_335R2|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wowin", "wowin.vcproj", "{1F77600B-6EB0-48CD-820A-F08F2F7B14AE}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+		wow_3.0.5 = wow_3.0.5
+		wow_3.2 = wow_3.2
+		wow_3.2.2_tw = wow_3.2.2_tw
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{1F77600B-6EB0-48CD-820A-F08F2F7B14AE}.Debug.ActiveCfg = Debug|Win32
+		{1F77600B-6EB0-48CD-820A-F08F2F7B14AE}.Debug.Build.0 = Debug|Win32
+		{1F77600B-6EB0-48CD-820A-F08F2F7B14AE}.Release.ActiveCfg = Release|Win32
+		{1F77600B-6EB0-48CD-820A-F08F2F7B14AE}.Release.Build.0 = Release|Win32
+		{1F77600B-6EB0-48CD-820A-F08F2F7B14AE}.wow_3.0.5.ActiveCfg = wow_3.0.5|Win32
+		{1F77600B-6EB0-48CD-820A-F08F2F7B14AE}.wow_3.0.5.Build.0 = wow_3.0.5|Win32
+		{1F77600B-6EB0-48CD-820A-F08F2F7B14AE}.wow_3.2.ActiveCfg = wow_3.2|Win32
+		{1F77600B-6EB0-48CD-820A-F08F2F7B14AE}.wow_3.2.Build.0 = wow_3.2|Win32
+		{1F77600B-6EB0-48CD-820A-F08F2F7B14AE}.wow_3.2.2_tw.ActiveCfg = wow_3.2.2_tw|Win32
+		{1F77600B-6EB0-48CD-820A-F08F2F7B14AE}.wow_3.2.2_tw.Build.0 = wow_3.2.2_tw|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

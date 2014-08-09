@@ -1,0 +1,114 @@
+# Sample makefile for rpng-win / rpng2-win / wpng using gcc and make.
+# Greg Roelofs
+# Last modified:  7 March 2002
+#
+#	The programs built by this makefile are described in the book,
+#	"PNG:  The Definitive Guide," by Greg Roelofs (O'Reilly and
+#	Associates, 1999).  Go buy a copy, eh?  Buy some for friends
+#	and family, too.  (Not that this is a blatant plug or anything.)
+#
+# Invoke this makefile from a shell prompt in the usual way; for example:
+#
+#	make -f Makefile.mingw
+#
+# This makefile assumes libpng and zlib have already been built or downloaded
+# and are both installed in /usr/local/{include,lib} (as indicated by the
+# PNG* and Z* macros below).  Edit as appropriate--choose only ONE each of
+# the PNGINC, PNGLIB, ZINC and ZLIB lines.
+#
+# This makefile builds statically linked executables (against libpng and zlib,
+# that is), but that can be changed by uncommenting the appropriate PNGLIB and
+# ZLIB lines.
+
+
+RESDIR = ../../res
+VPATH = ../../../libpng-1.2.8-src/contrib/gregbook	$(RESDIR)
+# macros --------------------------------------------------------------------
+
+#PNGINC = -I/usr/local/include/libpng12
+#PNGLIB = -L/usr/local/lib -lpng12 # dynamically linked against libpng
+PNGLIB = -lpng						 # statically linked against libpng
+# or:
+#PNGINC = -I../libpng
+#PNGLIB = -L../libpng -lpng
+#PNGLIB = ../libpng/libpng.a
+
+#ZINC = -I/usr/local/include
+#ZLIB = -L/usr/local/lib -lz		# dynamically linked against zlib
+ZLIB = -lz							# statically linked against zlib
+#ZINC = -I../zlib
+#ZLIB = -L../zlib -lz
+#ZLIB = ../zlib/libz.a
+
+#XINC = -I/usr/include			# old-style, stock X distributions
+#XLIB = -L/usr/lib/X11 -lX11
+#XINC = -I/usr/openwin/include		# Sun workstations (OpenWindows)
+#XLIB = -L/usr/openwin/lib -lX11
+#XINC = -I/usr/X11R6/include		# new X distributions (XFree86, etc.)
+#XLIB = -L/usr/X11R6/lib -lX11
+
+INCS = $(PNGINC) $(ZINC) $(XINC)
+RLIBS = $(PNGLIB) $(ZLIB) $(XLIB) -lm -lgdi32
+WLIBS = $(PNGLIB) $(ZLIB)
+
+CC = gcc
+LD = gcc
+RM = rm -f
+CFLAGS = -c -O3 -Wall $(INCS) -DPNG_USE_DLL \
+	-mms-bitfields  -fno-exceptions -fomit-frame-pointer -march=i386 -mcpu=i686 \
+	 -idirafter h:/glibc/include \
+	-D__GW32__ -D_LARGEFILE_SOURCE=1 -D_LARGEFILE64_SOURCE=1 -D_FILE_OFFSET_BITS=64
+
+# [note that -Wall is a gcc-specific compilation flag ("most warnings on")]
+# [-ansi, -pedantic and -W can also be used]
+LDFLAGS = -s -L../..
+O = .o
+E =	.exe
+
+RPNG  = rpng-win
+RPNG2 = rpng2-win
+WPNG  = wpng
+
+ROBJS  = $(RPNG)$(O) $(RPNG)-res$(O) readpng$(O)
+ROBJS2 = $(RPNG2)$(O)  $(RPNG2)-res$(O) readpng2$(O)
+WOBJS  = $(WPNG)$(O) $(WPNG)-res$(O) writepng$(O)
+
+EXES = $(RPNG)$(E) $(RPNG2)$(E) $(WPNG)$(E)
+
+
+# implicit make rules -------------------------------------------------------
+
+.c$(O):
+	$(CC) -c $(CFLAGS) $<
+
+%-res$(O): %-res.rc
+	windres --include-dir=$(RESDIR) -i $< -o $@
+  
+
+
+# dependencies --------------------------------------------------------------
+
+all:  $(EXES)
+
+$(RPNG)$(E): $(ROBJS)
+	$(LD) $(LDFLAGS) -o $@ $(ROBJS) $(RLIBS)
+
+$(RPNG2)$(E): $(ROBJS2)
+	$(LD) $(LDFLAGS) -o $@ $(ROBJS2) $(RLIBS)
+
+$(WPNG)$(E): $(WOBJS)
+	$(LD) $(LDFLAGS) -o $@ $(WOBJS) $(WLIBS)
+
+$(RPNG)$(O):	$(RPNG).c readpng.h
+$(RPNG2)$(O):	$(RPNG2).c readpng2.h
+$(WPNG)$(O):	$(WPNG).c writepng.h
+
+readpng$(O):	readpng.c readpng.h
+readpng2$(O):	readpng2.c readpng2.h
+writepng$(O):	writepng.c writepng.h
+
+
+# maintenance ---------------------------------------------------------------
+
+clean:
+	$(RM) $(EXES) $(ROBJS) $(ROBJS2) $(WOBJS)

@@ -1,0 +1,470 @@
+diff -ipuwr -x config.log -x config.status -x config.cache -x '*.Po' -x '*.pot' libpng-1.2.7-orig/contrib/gregbook/rpng-win.c libpng-1.2.7/contrib/gregbook/rpng-win.c
+--- libpng-1.2.7-orig/contrib/gregbook/rpng-win.c	2004-09-12 04:19:32.000000000 +0200
++++ libpng-1.2.7/contrib/gregbook/rpng-win.c	2004-09-14 22:49:55.781250000 +0200
+@@ -57,8 +57,8 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+-#include <time.h>
+ #include <windows.h>
++#include <time.h>
+ #include <conio.h>      /* only for _getch() */
+ 
+ /* #define DEBUG  :  this enables the Trace() macros */
+diff -ipuwr -x config.log -x config.status -x config.cache -x '*.Po' -x '*.pot' libpng-1.2.7-orig/contrib/gregbook/rpng2-win.c libpng-1.2.7/contrib/gregbook/rpng2-win.c
+--- libpng-1.2.7-orig/contrib/gregbook/rpng2-win.c	2004-09-12 04:19:32.000000000 +0200
++++ libpng-1.2.7/contrib/gregbook/rpng2-win.c	2004-09-14 22:49:55.812500000 +0200
+@@ -63,9 +63,9 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <setjmp.h>    /* for jmpbuf declaration in readpng2.h */
+-#include <time.h>
+ #include <math.h>      /* only for PvdM background code */
+ #include <windows.h>
++#include <time.h>
+ #include <conio.h>     /* only for _getch() */
+ 
+ /* all for PvdM background code: */
+diff -ipuwr -x config.log -x config.status -x config.cache -x '*.Po' -x '*.pot' libpng-1.2.7-orig/contrib/visupng/PngFile.h libpng-1.2.7/contrib/visupng/PngFile.h
+--- libpng-1.2.7-orig/contrib/visupng/PngFile.h	2000-06-06 01:21:40.000000000 +0200
++++ libpng-1.2.7/contrib/visupng/PngFile.h	2004-09-14 22:49:55.828125000 +0200
+@@ -1,10 +1,7 @@
+ //------------------------------------------
+ //  PNGFILE.H -- Header File for pngfile.c
+ //------------------------------------------
+-
+-// Copyright 2000, Willem van Schaik.  For conditions of distribution and
+-// use, see the copyright/license/disclaimer notice in png.h
+-
++#define byte	short
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+diff -ipuwr -x config.log -x config.status -x config.cache -x '*.Po' -x '*.pot' libpng-1.2.7-orig/contrib/visupng/VisualPng.rc libpng-1.2.7/contrib/visupng/VisualPng.rc
+--- libpng-1.2.7-orig/contrib/visupng/VisualPng.rc	2000-06-12 13:55:07.000000000 +0200
++++ libpng-1.2.7/contrib/visupng/VisualPng.rc	2004-09-19 13:20:46.062500000 +0200
+@@ -7,7 +7,11 @@
+ //
+ // Generated from the TEXTINCLUDE 2 resource.
+ //
+-#include "afxres.h"
++//#include "afxres.h"
++#define APSTUDIO_HIDDEN_SYMBOLS
++#include "windows.h"
++#undef APSTUDIO_HIDDEN_SYMBOLS
++#include "dlgs.h"
+ 
+ /////////////////////////////////////////////////////////////////////////////
+ #undef APSTUDIO_READONLY_SYMBOLS
+@@ -87,6 +91,8 @@ BEGIN
+     "P",            IDM_FILE_PREVIOUS,      VIRTKEY, CONTROL, NOINVERT
+     "V",            IDM_FILE_PREVIOUS,      VIRTKEY, CONTROL, NOINVERT
+     "X",            IDM_FILE_EXIT,          VIRTKEY, ALT, NOINVERT
++    VK_DOWN,        IDM_FILE_PREVIOUS,      VIRTKEY, CONTROL, NOINVERT
++    VK_UP,          IDM_FILE_PREVIOUS,      VIRTKEY, CONTROL, NOINVERT
+ END
+ 
+ 
+@@ -150,3 +156,137 @@ END
+ /////////////////////////////////////////////////////////////////////////////
+ #endif    // not APSTUDIO_INVOKED
+ 
++#define WIN32_LEAN_AND_MEAN
++#include <windows.h>
++#include <winver.h>
++  
++#define VER_FILEVERSION 1,0,1723,20850
++#define VER_FILEVERSION_STR "1.0.1723.20850"
++#define VER_FILELTVERSION_STR ""
++#define VER_LEGALCOPYRIGHT_STR "© 2004 Willem van Schaik"
++//#define VER_COMMENT_STR  ""  
++
++#define VER_FILEDESCRIPTION_STR "VisualPng: PNG viewer"
++#define VER_INTERNALNAME_STR "visualpng"
++#define VER_ORIGINALFILENAME_STR "visualpng.exe"
++#define VER_WWW_STR "http://www.libpng.org/pub/png"
++#define VER_COMPANYNAME_STR "LibPng"
++#define VER_LICENSE_STR "see contrib/License "
++#define VER_LEGALTRADEMARKS_STR "LibPng®, LibPng®, VisualPng®"
++
++#define VER_PRODUCTNAME_STR "LibPng"
++#define VER_PRODUCTVERSION 1,2,7,1723
++#define VER_PRODUCTVERSION_STR "1.2.7.1723"
++
++
++#undef OFFICIAL
++#define FINAL            1
++
++#define GNUWIN32_SPECIALBUILD_STR  "GNU for Win32 <gnuwin32.sourceforge.net>"
++
++#define VER_FILETYPE               VFT_APP
++#ifndef VER_FILETYPE
++#define VER_FILETYPE                VFT_APP
++#endif
++
++#define VER_FILESUBTYPE             VFT2_UNKNOWN
++
++#ifndef DEBUG
++#define VER_DEBUG                   0
++#else /* DEBUG */
++#define VER_DEBUG                   VS_FF_DEBUG
++#endif
++
++#ifndef PATCHED
++#define VER_PATCHED                   0
++#else /* PATCHED */
++#define VER_PATCHED                   VS_FF_PATCHED
++#endif
++
++#ifndef OFFICIAL
++#define VER_SPECIALBUILD            VS_FF_SPECIALBUILD
++#ifndef VER_SPECIALBUILD_STR
++#define VER_SPECIALBUILD_STR       GNUWIN32_SPECIALBUILD_STR
++#endif
++#else /* OFFICIAL */
++#define VER_SPECIALBUILD            0
++#endif /* OFFICIAL */
++
++#ifndef FINAL
++#define VER_PRIVATEBUILD            VS_FF_PRIVATEBUILD
++#ifndef VER_PRIVATEBUILD_STR
++#define VER_PRIVATEBUILD_STR       "Pre-release"
++#endif /* VER_PRIVATEBUILD_STR */
++#define VER_PRERELEASE              VS_FF_PRERELEASE
++#else /* FINAL */
++#define VER_PRIVATEBUILD            0
++#define VER_PRERELEASE              0
++#endif /* FINAL */
++
++#define VER_FILEFLAGSMASK           VS_FFI_FILEFLAGSMASK
++#define VER_FILEFLAGS               (VER_PRIVATEBUILD|VER_SPECIALBUILD|VER_PRERELEASE|VER_DEBUG|VER_PATCHED)
++
++#define VER_FILEOS                  VOS__WINDOWS32
++
++#ifdef RC_INVOKED
++
++VS_VERSION_INFO         VERSIONINFO
++FILEVERSION         VER_FILEVERSION
++PRODUCTVERSION      VER_PRODUCTVERSION
++FILEFLAGSMASK       VER_FILEFLAGSMASK
++FILEFLAGS           VER_FILEFLAGS
++FILEOS              VER_FILEOS
++FILETYPE            VER_FILETYPE
++FILESUBTYPE         VER_FILESUBTYPE
++
++BEGIN
++    BLOCK "StringFileInfo"
++    BEGIN
++     BLOCK "040904E4"
++    /* language ID = U.S. English, char set = Windows, Multilingual */
++     BEGIN
++#ifdef VER_COMMENT_STR
++         VALUE "Comments",          VER_COMMENT_STR
++#endif
++         VALUE "CompanyName",      VER_COMPANYNAME_STR
++         VALUE "License",            VER_LICENSE_STR
++         VALUE "FileDescription",  VER_FILEDESCRIPTION_STR
++         VALUE "FileVersion",      VER_FILEVERSION_STR
++#if !(VER_FILETYPE-VFT_DLL)
++         VALUE "LibToolFileVersion",VER_FILELTVERSION_STR
++#endif
++          VALUE "InternalName",     VER_INTERNALNAME_STR
++#ifdef VER_LEGALCOPYRIGHT_STR
++          VALUE "LegalCopyright",   VER_LEGALCOPYRIGHT_STR
++#endif
++#ifdef VER_LEGALTRADEMARKS_STR
++         VALUE "LegalTrademarks",  VER_LEGALTRADEMARKS_STR
++#endif
++         VALUE "OriginalFilename", VER_ORIGINALFILENAME_STR
++         VALUE "ProductName",      VER_PRODUCTNAME_STR
++         VALUE "ProductVersion",   VER_PRODUCTVERSION_STR
++#ifdef VER_PATCHLEVEL_STR
++         VALUE "Patch level",  VER_PATCHLEVEL_STR
++#endif
++#ifdef VER_PRIVATEBUILD_STR
++         VALUE "PrivateBuild",  VER_PRIVATEBUILD_STR
++#endif
++#ifdef VER_SPECIALBUILD_STR
++         VALUE "SpecialBuild",  VER_SPECIALBUILD_STR
++#endif
++#ifdef VER_AUTHOR_STR
++         VALUE "Authors",  VER_AUTHOR_STR
++#endif
++#ifdef VER_WWW_STR
++         VALUE "WWW",  VER_WWW_STR
++#endif
++END
++    END
++    BLOCK "VarFileInfo"
++    BEGIN
++     VALUE "Translation", 0x409, 1252
++    END
++END
++
++#endif /*  RC_INVOKED */
++//500 ICON MOVEABLE PURE LOADONCALL DISCARDABLE "libpng.ico"
+diff -ipuwr -x config.log -x config.status -x config.cache -x '*.Po' -x '*.pot' libpng-1.2.7-orig/contrib/visupng/resource.h libpng-1.2.7/contrib/visupng/resource.h
+--- libpng-1.2.7-orig/contrib/visupng/resource.h	2000-06-05 17:28:48.000000000 +0200
++++ libpng-1.2.7/contrib/visupng/resource.h	2004-09-14 22:49:55.843750000 +0200
+@@ -10,6 +10,7 @@
+ #define IDM_OPTIONS_BACKGROUND          40006
+ #define IDM_OPTIONS_STRETCH             40007
+ #define IDM_HELP_ABOUT                  40008
++#define IDC_STATIC                      -1
+ 
+ // Next default values for new objects
+ // 
+diff -ipuwr -x config.log -x config.status -x config.cache -x '*.Po' -x '*.pot' libpng-1.2.7-orig/makefile.mingw libpng-1.2.7/makefile.mingw
+--- libpng-1.2.7-orig/makefile.mingw	2004-09-12 04:19:36.000000000 +0200
++++ libpng-1.2.7/makefile.mingw	2004-09-19 10:12:34.312500000 +0200
+@@ -1,4 +1,4 @@
+-# makefile for cygwin on x86
++# makefile for mingw on x86
+ #   Builds both dll (with import lib) and static lib versions
+ #   of the library, and builds two copies of pngtest: one
+ #   statically linked and one dynamically linked.
+@@ -36,14 +36,18 @@ DESTDIR=
+ # list at the bottom of this makefile.
+ 
+ CC=gcc
+-ifdef MINGW
+-MINGW_CCFLAGS=-mno-cygwin -I/usr/include/mingw
+-MINGW_LDFLAGS=-mno-cygwin -L/usr/lib/mingw
+-endif
++# ifdef MINGW
++MINGW_CCFLAGS=-I/usr/include/mingw -DPNG_USE_PNGGCCRD -DPNG_USE_GLOBAL_ARRAYS -Wall \
++	 -idirafter h:/glibc/include \
++	 -mms-bitfields  -fno-exceptions -fomit-frame-pointer -march=i386 -mcpu=i686 \
++	-D__GW32__ -D_LARGEFILE_SOURCE=1 -D_LARGEFILE64_SOURCE=1 -D_FILE_OFFSET_BITS=64
++MINGW_LDFLAGS=-Wl,--major-image-version=$(MAJOR) -Wl,--minor-image-version=$(MINOR) 
++# endif
+ 
+ # Where "make install" puts libpng*.a, *png*.dll, png.h, and pngconf.h
++prefix=c:/progra~1/LibPng
+ ifndef prefix
+-prefix=/usr
++prefix=c:/progra~1/LibPng
+ $(warning You haven't specified a 'prefix=' location. Defaulting to "/usr")
+ endif
+ 
+@@ -80,14 +84,19 @@ LIBNAME = libpng12
+ PNGMAJ = 0
+ CYGDLL = 12
+ PNGMIN = 1.2.7
++MAJOR=$(shell echo $(PNGMIN) | sed -e "s/\\..*$$//")
++MINOR=$(shell echo $(PNGMIN) | sed -e "s/^[^\\.]*\\.0*\\([^.]*\\).*$$/\\1/")
+ PNGVER = $(PNGMAJ).$(PNGMIN)
+ 
+-SHAREDLIB=cygpng$(CYGDLL).dll
++SHAREDLIB=libpng$(CYGDLL).dll
+ STATLIB=libpng.a
+ IMPLIB=libpng.dll.a
+ SHAREDDEF=libpng.def
+ LIBS=$(SHAREDLIB) $(STATLIB)
+ EXE=.exe
++SHAREDRC=libpng-dll.rc
++SHAREDRCO=libpng-dll-rc.o
++O2DLL=o2dll
+ 
+ LDFLAGS=$(strip -L. $(MINGW_LDFLAGS) -lpng $(addprefix -L,$(ZLIBLIB)) -lz)
+ LDSFLAGS=$(strip -shared -L.  $(MINGW_LDFLAGS) -Wl,--export-all)
+@@ -114,17 +123,22 @@ DL =$(D)$(LIBPATH)
+ 
+ OBJS = png.o pngset.o pngget.o pngrutil.o pngtrans.o pngwutil.o \
+ 	pngread.o pngrio.o pngwio.o pngwrite.o pngrtran.o \
+-	pngwtran.o pngmem.o pngerror.o pngpread.o # pnggccrd.o
++	pngwtran.o pngmem.o pngerror.o pngpread.o pnggccrd.o
+ 
+-OBJSDLL = $(OBJS:.o=.pic.o)
++OBJSDLL = $(OBJS:.o=.dll.o)	libpng-dllversion.dll.o 
+ 
+-.SUFFIXES: .c .o .pic.o
++.SUFFIXES: .c .o .pic.o	.rc	-rc.o .dll.o
+ 
+ %.o : %.c
+-	$(CC) -c $(CFLAGS) -o $@ $<
+-%.pic.o : CFLAGS += -DPNG_BUILD_DLL
++	$(CC) -c -static -D__STATIC__ -DPNG_STATIC -DZLIB_STATIC $(CFLAGS) -o $@ $<
++%.pic.o : CFLAGS += -DPNG_USE_DLL
++%.dll.o : CFLAGS += -DPNG_BUILD_DLL
+ %.pic.o : %.c
+ 	$(CC) -c $(CFLAGS) -o $@ $<
++%.dll.o : %.c
++	$(CC) -c $(CFLAGS) -o $@ $<
++%-rc.o: %.rc
++	windres -i $< -o $@
+ 
+ all: all-static all-shared libpng.pc libpng-config libpng.pc libpng-config
+ 
+@@ -149,7 +163,7 @@ libpng-config: scripts/libpng-config-hea
+ 	echo prefix=\"$(prefix)\"; \
+ 	echo I_opts=\"-I$(INCPATH)/$(LIBNAME)\"; \
+ 	echo L_opts=\"-L$(LIBPATH)\"; \
+-	echo libs=\"-lpng$(CYGDLL) -lz\"; \
++	echo libs=\"-lpng$(CYGDLL) -lz -lgw32c -liberty -lintl -liconv -lwsock32 -lole32 -luuid -lmsvcp60\"; \
+ 	cat $(S)/scripts/libpng-config-body.in ) > libpng-config
+ 	chmod +x libpng-config
+ 
+@@ -163,9 +177,9 @@ pnggccrd.o: pnggccrd.c png.h pngconf.h
+ 	@echo '    You can ignore the "control reaches end of non-void function"'
+ 	@echo '    warning and "<variable> defined but not used" warnings:'
+ 	@echo ""
+-	$(CC) -c $(CFLAGS) -o $@ $<
++	$(CC) -c -static -D__STATIC__ -DPNG_STATIC -DZLIB_STATIC $(CFLAGS)  -o $@ $<
+ 
+-pnggccrd.pic.o:	pnggccrd.c png.h pngconf.h
++pnggccrd.dll.o:	pnggccrd.c png.h pngconf.h
+ 	@echo ""
+ 	@echo '    You can ignore the "control reaches end of non-void function"'
+ 	@echo '    warning and "<variable> defined but not used" warnings:'
+@@ -176,24 +190,24 @@ $(STATLIB): $(OBJS)
+ 	ar rc $@ $(OBJS)
+ 	$(RANLIB) $@
+ 
+-$(SHAREDDEF): scripts/png32ms.def
+-	cat $< | sed -e '1{G;s/^\(.*\)\(\n\)/EXPORTS/;};2,/^EXPORTS/d' | \
+-	sed -e 's/\([^;]*\);/;/' > $@
++#$(SHAREDDEF): scripts/png32ms.def
++#	cat $< | sed -e '1{G;s/^\(.*\)\(\n\)/EXPORTS/;};2,/^EXPORTS/d' | \
++#	sed -e 's/\([^;]*\);/;/' > $@
+ 
+-$(SHAREDLIB): $(OBJSDLL) $(SHAREDDEF)
+-	$(CC) $(LDSFLAGS) -o $@ $(OBJSDLL) -L. $(LDEXTRA)
++$(SHAREDLIB): $(OBJSDLL) #$(SHAREDDEF)
++	$(O2DLL) -l $(IMPLIB) -o libpng.dll $(OBJSDLL) -L$(ZLIBLIB) -lz
+ 
+-pngtest$(EXE): pngtest.pic.o $(SHAREDLIB)
+-	$(CC) $(CFLAGS) $< $(LDFLAGS) -o $@
++pngtest$(EXE): pngtest.pic.o pngtest-rc.o $(SHAREDLIB)
++	$(CC) $(CFLAGS) $< pngtest-rc.o $(LDFLAGS) -o $@
+ 
+-pngtest-stat$(EXE): pngtest.o $(STATLIB)
+-	$(CC) -static $(CFLAGS) $< $(LDFLAGS) -o $@
++pngtest-stat$(EXE): pngtest.o pngtest-rc.o $(STATLIB)
++	$(CC) -static $(CFLAGS) $< pngtest-rc.o $(LDFLAGS) -o $@
+ 
+ pngtest.pic.o: pngtest.c
+-	$(CC) $(CFLAGS) -c $< -o $@
++	$(CC) $(CFLAGS) -DPNG_USE_DLL -c $< -o $@
+ 
+ pngtest.o: pngtest.c
+-	$(CC) $(CFLAGS) -c $< -o $@
++	$(CC) -static -D__STATIC__ -DPNG_STATIC -DZLIB_STATIC $(CFLAGS) -c $< -o $@
+ 
+ test: test-static test-shared
+ 
+@@ -205,9 +219,9 @@ test-shared: pngtest$(EXE)
+ 
+ install-static: $(STATLIB) install-headers install-man
+ 	-@if [ ! -d $(DL) ]; then $(MKDIR) $(DL); fi
+-	install -m 644 $(STATLIB) $(DL)/$(LIBNAME).a
++	install -p -m 644 $(STATLIB) $(DL)/$(LIBNAME).a
+ 	-@rm -f $(DL)/$(STATLIB)
+-	(cd $(DL); ln -sf $(LIBNAME).a $(STATLIB))
++	(cd $(DL); cp -fp $(LIBNAME).a $(STATLIB))
+ 
+ install-shared: $(SHAREDLIB) libpng.pc libpng-config install-headers install-man
+ 	-@if [ ! -d $(DL) ]; then $(MKDIR) $(DL); fi
+@@ -215,35 +229,35 @@ install-shared: $(SHAREDLIB) libpng.pc l
+ 	-@if [ ! -d $(DL)/pkgconfig ]; then $(MKDIR) $(DL)/pkgconfig; fi
+ 	-@/bin/rm -f $(DL)/pkgconfig/$(LIBNAME).pc
+ 	-@/bin/rm -f $(DL)/pkgconfig/libpng.pc
+-	install -m 644 $(IMPLIB) $(DL)/$(LIBNAME).dll.a
++	install -p -m 644 $(IMPLIB) $(DL)/$(LIBNAME).dll.a
+ 	-@rm -f $(DL)/$(IMPLIB)
+-	(cd $(DL); ln -sf $(LIBNAME).dll.a $(IMPLIB))
+-	install -s -m 755 $(SHAREDLIB) $(DB)
+-	install -m 644 libpng.pc $(DL)/pkgconfig/$(LIBNAME).pc
+-	(cd $(DL)/pkgconfig; ln -sf $(LIBNAME).pc libpng.pc)
++	(cd $(DL); cp -fp $(LIBNAME).dll.a $(IMPLIB))
++	install -p -m 755 $(SHAREDLIB) $(DB)
++	install -p -m 644 libpng.pc $(DL)/pkgconfig/$(LIBNAME).pc
++	(cd $(DL)/pkgconfig; cp -fp $(LIBNAME).pc libpng.pc)
+ 
+ install-headers:
+ 	-@if [ ! -d $(DI) ]; then $(MKDIR) $(DI); fi
+ 	-@if [ ! -d $(DI)/$(LIBNAME) ]; then $(MKDIR) $(DI)/$(LIBNAME); fi
+ 	-@rm -f $(DI)/png.h
+ 	-@rm -f $(DI)/pngconf.h
+-	install -m 644 $(S)/png.h $(S)/pngconf.h $(DI)/$(LIBNAME)
++	install -p -m 644 $(S)/png.h $(S)/pngconf.h $(DI)/$(LIBNAME)
+ 	-@rm -f $(DI)/libpng
+-	(cd $(DI); ln -sf $(LIBNAME) libpng; ln -sf $(LIBNAME)/* .)
++	(cd $(DI); cp -fp $(LIBNAME) libpng; cp -fp $(LIBNAME)/* .)
+ 
+ install-man:
+ 	-@if [ ! -d $(D)$(MAN3PATH) ]; then $(MKDIR) $(D)$(MAN3PATH); fi
+ 	-@if [ ! -d $(D)$(MAN5PATH) ]; then $(MKDIR) $(D)$(MAN5PATH); fi
+-	install -m 644 $(S)/libpngpf.3 $(S)/libpng.3 $(D)$(MAN3PATH)
+-	install -m 644 $(S)/png.5 $(D)$(MAN5PATH)
++	install -p -m 644 $(S)/libpngpf.3 $(S)/libpng.3 $(D)$(MAN3PATH)
++	install -p -m 644 $(S)/png.5 $(D)$(MAN5PATH)
+ 
+ install-config: libpng-config
+ 	-@if [ ! -d $(DB) ]; then mkdir $(DB); fi
+ 	-@/bin/rm -f $(DB)/libpng-config
+ 	-@/bin/rm -f $(DB)/$(LIBNAME)-config
+-	cp libpng-config $(DB)/$(LIBNAME)-config
++	cp -fp libpng-config $(DB)/$(LIBNAME)-config
+ 	chmod 755 $(DB)/$(LIBNAME)-config
+-	(cd $(DB); ln -sf $(LIBNAME)-config libpng-config)
++	(cd $(DB); cp -fp $(LIBNAME)-config libpng-config)
+ 
+ # Run this to verify that a future `configure' run will pick up the settings
+ # you want.
+@@ -280,7 +294,7 @@ test-installed:
+ 	./pngtesti$(EXE) pngtest.png
+ 
+ clean:
+-	/bin/rm -f *.pic.o *.o $(STATLIB) $(IMPLIB) $(SHAREDLIB) \
++	/bin/rm -f *.pic.o *.dll.o *.o $(STATLIB) $(IMPLIB) $(SHAREDLIB) \
+ 	pngtest-stat$(EXE) pngtest$(EXE) pngout.png $(SHAREDDEF) \
+ 	libpng-config libpng.pc pngtesti$(EXE)
+ 
+@@ -292,21 +306,21 @@ writelock:
+ 
+ # DO NOT DELETE THIS LINE -- make depend depends on it.
+ 
+-png.o png.pic.o:		png.h pngconf.h png.c
+-pngerror.o pngerror.pic.o:	png.h pngconf.h pngerror.c
+-pngrio.o pngrio.pic.o:		png.h pngconf.h pngrio.c
+-pngwio.o pngwio.pic.o:		png.h pngconf.h pngwio.c
+-pngmem.o pngmem.pic.o:		png.h pngconf.h pngmem.c
+-pngset.o pngset.pic.o:		png.h pngconf.h pngset.c
+-pngget.o pngget.pic.o:		png.h pngconf.h pngget.c
+-pngread.o pngread.pic.o:	png.h pngconf.h pngread.c
+-pngrtran.o pngrtran.pic.o:	png.h pngconf.h pngrtran.c
+-pngrutil.o pngrutil.pic.o:	png.h pngconf.h pngrutil.c
+-pngtrans.o pngtrans.pic.o:	png.h pngconf.h pngtrans.c
+-pngwrite.o pngwrite.pic.o:	png.h pngconf.h pngwrite.c
+-pngwtran.o pngwtran.pic.o:	png.h pngconf.h pngwtran.c
+-pngwutil.o pngwutil.pic.o:	png.h pngconf.h pngwutil.c
+-pngpread.o pngpread.pic.o:	png.h pngconf.h pngpread.c
++png.o 		png.pic.o		png.dll.o:			png.h pngconf.h png.c
++pngerror.o 	pngerror.pic.o	pngerror.dll.o:		png.h pngconf.h pngerror.c
++pngrio.o 	pngrio.pic.o	pngrio.dll.o:		png.h pngconf.h pngrio.c
++pngwio.o 	pngwio.pic.o	pngwio.dll.o:		png.h pngconf.h pngwio.c
++pngmem.o 	pngmem.pic.o	pngmem.dll.o:		png.h pngconf.h pngmem.c
++pngset.o 	pngset.pic.o	pngset.dll.o:		png.h pngconf.h pngset.c
++pngget.o 	pngget.pic.o	pngget.dll.o:		png.h pngconf.h pngget.c
++pngread.o 	pngread.pic.o	pngread.dll.o:		png.h pngconf.h pngread.c
++pngrtran.o 	pngrtran.pic.o	pngrtran.dll.o:		png.h pngconf.h pngrtran.c
++pngrutil.o 	pngrutil.pic.o	pngrutil.dll.o:		png.h pngconf.h pngrutil.c
++pngtrans.o 	pngtrans.pic.o	pngtrans.dll.o:		png.h pngconf.h pngtrans.c
++pngwrite.o 	pngwrite.pic.o	pngwrite.dll.o:		png.h pngconf.h pngwrite.c
++pngwtran.o 	pngwtran.pic.o	pngwtran.dll.o:		png.h pngconf.h pngwtran.c
++pngwutil.o 	pngwutil.pic.o	pngwutil.dll.o:		png.h pngconf.h pngwutil.c
++pngpread.o 	pngpread.pic.o	pngpread.dll.o:		png.h pngconf.h pngpread.c
+ 
+ pngtest.o:			png.h pngconf.h pngtest.c
+ pngtest-stat.o:			png.h pngconf.h pngtest.c
+diff -ipuwr -x config.log -x config.status -x config.cache -x '*.Po' -x '*.pot' libpng-1.2.7-orig/scripts/libpng.pc.in libpng-1.2.7/scripts/libpng.pc.in
+--- libpng-1.2.7-orig/scripts/libpng.pc.in	2004-09-12 04:19:36.000000000 +0200
++++ libpng-1.2.7/scripts/libpng.pc.in	2004-09-14 22:54:55.531250000 +0200
+@@ -7,5 +7,5 @@ includedir=${exec_prefix}/include
+ Name: libpng12
+ Description: Loads and saves PNG files
+ Version: 1.2.7
+-Libs: -L${libdir} -lpng12 -lz -lm
++Libs: -L${libdir} -lpng12 -lz -lm -lgw32c -liberty -lintl -liconv -lwsock32 -lole32 -luuid
+ Cflags: -I${includedir}/libpng12

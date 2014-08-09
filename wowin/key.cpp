@@ -1,0 +1,5 @@
+#include "stdafx.h"
+#include "callhook.h"
+#include "wowentry.h"
+#include "dllentry.h"
+#include "key.h"

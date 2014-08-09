@@ -19,3 +19,14 @@
 *.exe
 *.out
 *.app
+LogView/zlib-1.2.3/contrib/masmx86/.svn/
+LogView/zlib-1.2.3/contrib/masmx64/.svn/
+LogView/zlib-1.2.3/contrib/minizip/.svn/
+LogView/zlib-1.2.3/contrib/pascal/.svn/text-base/example.pas.svn-base
+wave/.svn/
+wayview/.svn/
+wayview/res/.svn/
+wowin/.svn/
+LogView/libpng-1.2.8-src/src/libpng/1.2.8/libpng-1.2.8/.svn/text-base/makefile.mingw.svn-base
+LogView/libpng-1.2.8-src/src/libpng/1.2.8/libpng-1.2.8/contrib/gregbook/.svn/
+LogView/libpng-1.2.8-src/src/libpng/1.2.8/libpng-1.2.8-src/scripts/.svn/
